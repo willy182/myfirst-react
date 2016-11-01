@@ -20,7 +20,7 @@ export default class FieldInput extends Component {
           type={this.props.type}
           name={this.props.name}
           onChange={this.handleChange.bind(this)}
-          value={this.state.nilai} /><span>{this.state.errorMessage}</span>
+          value={this.state.nilai} />
       </div>
     );
   }
