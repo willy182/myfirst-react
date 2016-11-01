@@ -17,16 +17,6 @@ export default class Form extends Component {
   }
   handleSubmit (e) {
     console.log(e)
-    let u = this.state.username
-    if(u === ''){
-      alert('semua inputan harus diisi');
-    }
-    else{
-      alert(u);
-      // $.post(Config.BASE_URL+'/addpost/', {userId:store.get('user').userId, status:this.state.post}, function(mypost){
-
-      // });
-    }
     e.preventDefault();
   }
   render () {

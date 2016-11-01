@@ -10,7 +10,6 @@ export default class FieldInput extends Component {
   }
   handleChange (s){
     let u = s.target.value
-    console.log(u)
     let valid = this.props.validate(u);
     this.validation(event.target.value, valid);
   }
