@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './components/WidgetForm/Form';
 import List from './components/WidgetList/List';
+import config from './config';
 import logo from './logo.svg';
 import './App.css';
 
@@ -11,25 +12,16 @@ class App extends Component {
       users: []
     };
   }
-  componentDidMount () {
+  componentWillMount () {
     fetch(config.API_URL+'/allusers').then(function(response) {
       return response.json();
     }).then(function(j) {
       var member = this.state.users;
-      j.map(function(value, key){
+      j.map(function(value){
         member.push({id: value.userId, name: value.username, email: value.email});
       })
       this.setState({users: member});
     }.bind(this));
-  }
-  handleUsername (e) {
-    this.setState({username: e.target.value});
-  }
-  handleEmail (e) {
-    this.setState({email: e.target.value});
-  }
-  handlePassword (e) {
-    this.setState({password: e.target.value});
   }
   render() {
     return (
@@ -44,8 +36,8 @@ class App extends Component {
                 </p>
             </div>
             <div className="App-frame">
-                <Form onUsername={this.handleUsername.bind(this)} onEmail={this.handleEmail.bind(this)} onPassword={this.handlePassword.bind(this)} />
-                <List />
+                <Form />
+                <List users={this.state.users} />
             </div>
         </div>
     );
