@@ -6,3 +6,4 @@
  */
 
 export WidgetForm from './WidgetForm/WidgetForm';
+export WidgetList from './WidgetList/WidgetList';

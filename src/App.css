@@ -18,6 +18,30 @@
   font-size: large;
 }
 
+.App-list {
+  float: left;
+  width: 80%;
+  margin-left: 4%;
+  margin-top: 10px;
+  border-left: 1px solid red;
+  min-height: 200px;
+}
+.App-list table {
+  margin: 0 15px;
+  width: 50%;
+}
+.App-list table tr {
+  border-bottom: 1px solid blue;
+}
+.App-list table td, .App-list table th {
+  padding: 10px;
+}
+
+.App-border {
+  float: left;
+  border-style: solid;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
