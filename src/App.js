@@ -9,19 +9,34 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      members: []
     };
   }
-  componentWillMount () {
+  getAllUser () {
     fetch(config.API_URL+'/allusers').then(function(response) {
       return response.json();
     }).then(function(j) {
-      var member = this.state.users;
-      j.map(function(value){
-        member.push({id: value.userId, name: value.username, email: value.email});
-      })
-      this.setState({users: member});
+      var r = j.result
+      var member = this.state.members;
+        if(r.length > 0) {
+          r.map(function(value){
+            member.push({id: value.userId, name: value.username, email: value.email});
+          })
+          this.setState({members: member});
+        }
     }.bind(this));
+  }
+  componentWillMount () {
+    this.getAllUser();
+  }
+  onPlayerAdd(name) {
+    let users = name
+    let members = this.state.members
+    members.push({id:members.length + 1, name: users.username, email: users.email})
+    
+    this.setState({
+      members: members
+    })
   }
   render() {
     return (
@@ -36,8 +51,8 @@ class App extends Component {
                 </p>
             </div>
             <div className="App-frame">
-                <Form />
-                <List users={this.state.users} />
+                <Form onAdd={this.onPlayerAdd.bind(this)} />
+                <List members={this.state.members} />
             </div>
         </div>
     );

@@ -16,9 +16,16 @@ export default class Form extends Component {
     let u = this.state.username
     let e = this.state.email
     let p = this.state.password
+    let member = {password: p, email: e, username: u}
+    this.props.onAdd(member)
     jQuery.post(config.API_URL+'/users', {username:u, email:e, password:p}, function(callback){
       //action
     });
+    this.setState({
+      username: "",
+      email: "",
+      password: "",
+    })
     event.preventDefault();
   }
   handleUsername (e) {
